@@ -90,3 +90,40 @@ class EmploySerializer(serializers.ModelSerializer):
         if obj.image:
             return request.build_absolute_uri(obj.image.url)
         return None
+    
+    
+class BackgroundSerializer(serializers.ModelSerializer):
+    image_url = serializers.SerializerMethodField()
+    title = serializers.SerializerMethodField()
+    body = serializers.SerializerMethodField()
+    
+    class Meta:
+        model = models.Background
+        fields = ['id', 'title', 'body', 'image_url']
+        
+    def get_title(self, obj):
+        return {
+            'uz': obj.title_uz,
+            'ru': obj.title_ru,
+            'en': obj.title_en
+        }
+        
+    def get_body(self, obj):
+        return {
+            'uz': obj.body_uz,
+            'ru': obj.body_ru,
+            'en': obj.body_en
+        }
+        
+    def get_image_url(self,obj):
+        request = self.context.get('request')
+        if obj.image:
+            return request.build_absolute_uri(obj.image.url)
+        return None
+    
+    
+class ContactSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Contact
+        fields = ['name', 'surname', 'age', 'number', 'created_at']
+        read_only_fields = ['created_at']

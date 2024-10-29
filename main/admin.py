@@ -34,3 +34,17 @@ class NewsAdmin(admin.ModelAdmin):
         (_('English'), {'fields': ('title_en', 'body_en')}),
         (_('Image'), {'fields': ('image',)}),
     )
+    
+    
+@admin.register(models.Background)
+class BackgroundAdmin(admin.ModelAdmin):
+    list_display = ('title_uz', 'title_ru', 'title_en')
+    fieldsets = (
+        (_('Uzbek'), {'fields': ('title_uz', 'body_uz',)}),
+        (_('Russian'), {'fields': ('title_ru', 'body_ru',)}),
+        (_('English'), {'fields': ('title_en', 'body_en',)}),
+        (_('Image'), {'fields': ('image',)}),
+    )
+    
+
+admin.site.register(models.Contact)

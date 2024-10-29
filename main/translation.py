@@ -15,3 +15,8 @@ class AboutUsTranslationOptions(TranslationOptions):
 @register(models.News)
 class NewsTranslationOptions(TranslationOptions):
     fields = ('title', 'body',)
+    
+    
+@register(models.Background)
+class BackgroundTranslationOptions(TranslationOptions):
+    fields = ('title', 'body',)
