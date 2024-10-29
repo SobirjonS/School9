@@ -43,7 +43,6 @@ class BackgroundAdmin(admin.ModelAdmin):
         (_('Uzbek'), {'fields': ('title_uz', 'body_uz',)}),
         (_('Russian'), {'fields': ('title_ru', 'body_ru',)}),
         (_('English'), {'fields': ('title_en', 'body_en',)}),
-        (_('Image'), {'fields': ('image',)}),
     )
     
 

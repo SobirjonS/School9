@@ -93,7 +93,6 @@ class EmploySerializer(serializers.ModelSerializer):
     
     
 class BackgroundSerializer(serializers.ModelSerializer):
-    image_url = serializers.SerializerMethodField()
     title = serializers.SerializerMethodField()
     body = serializers.SerializerMethodField()
     
@@ -114,12 +113,6 @@ class BackgroundSerializer(serializers.ModelSerializer):
             'ru': obj.body_ru,
             'en': obj.body_en
         }
-        
-    def get_image_url(self,obj):
-        request = self.context.get('request')
-        if obj.image:
-            return request.build_absolute_uri(obj.image.url)
-        return None
     
     
 class ContactSerializer(serializers.ModelSerializer):

@@ -31,7 +31,6 @@ class News(models.Model):
 
 
 class Background(models.Model):
-    image = models.ImageField(upload_to="background_images/")
     title = models.CharField(max_length=255)
     body = models.TextField()
     
